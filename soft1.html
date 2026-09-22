@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoftVerse Technologies | Software development company in India</title>
+<meta name="description" content="SoftVerse Technologies builds websites, mobile apps and AI tools for Indian businesses. Fixed-price milestones, you own the code, support in Hindi and English.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A2147'/%3E%3Cpath d='M22 11c0-2.6-2.6-4-6-4s-6 1.5-6 4c0 5.6 12 2.6 12 9 0 3-2.7 5-6 5s-6-2-6-4.6' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='7' r='3' fill='%23F2A900'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A2147;
+    --ink-2:#262F63;
+    --paper:#F7F8FC;
+    --white:#FFFFFF;
+    --marigold:#F2A900;
+    --marigold-d:#D99500;
+    --peacock:#0E6B6E;
+    --slate:#4A5273;
+    --line:#DCE0EE;
+    --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+    --body:'Hind','Noto Sans Devanagari','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.015em}
+  a{color:inherit}
+  img,svg{display:block;max-width:100%}
+  .wrap{width:min(1160px,100% - 2.5rem);margin-inline:auto}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:4px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--marigold);color:var(--ink);padding:.6rem 1rem;z-index:99}
+  .skip:focus{left:0}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;font:600 1rem var(--body);padding:.85rem 1.4rem;border-radius:6px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
+  .btn-primary{background:var(--marigold);color:var(--ink)}
+  .btn-primary:hover{background:var(--marigold-d)}
+  .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{border-color:#fff}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:var(--ink-2)}
+  .btn-outline{border-color:var(--ink);color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+
+  /* Logo */
+  .logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;--lg-bg:#1A2147;--lg-fg:#fff}
+  .logo svg{flex:none}
+  .wm{display:flex;flex-direction:column;line-height:1}
+  .wm b{font:700 1.4rem var(--display);letter-spacing:-.03em}
+  .wm small{font:500 .74rem var(--body);letter-spacing:.06em;margin-top:.22rem;color:var(--slate)}
+  footer .logo{--lg-bg:#F7F8FC;--lg-fg:#1A2147;color:#fff}
+  footer .wm small{color:#AEB4D3}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(247,248,252,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1.5rem}
+  .nav ul{display:flex;gap:1.75rem;list-style:none}
+  .nav ul a{text-decoration:none;font-weight:500;color:var(--slate)}
+  .nav ul a:hover{color:var(--ink)}
+  .nav .btn{padding:.6rem 1.1rem;font-size:.95rem}
+  @media(max-width:920px){.nav ul{display:none}}
+  @media(max-width:400px){.wm small{display:none}.nav .btn{padding:.55rem .9rem}}
+
+  /* Hero */
+  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.06' stroke-width='1'%3E%3Cpath d='M36 4 68 36 36 68 4 36Z'/%3E%3Ccircle cx='36' cy='36' r='12'/%3E%3Cpath d='M0 0 10 10M72 0 62 10M0 72 10 62M72 72 62 62'/%3E%3C/g%3E%3C/svg%3E")}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;padding-block:5rem 5.5rem;align-items:center}
+  .hero-copy > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero-copy > *:nth-child(2){animation-delay:.08s}
+  .hero-copy > *:nth-child(3){animation-delay:.16s}
+  .hero-copy > *:nth-child(4){animation-delay:.24s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.9rem);max-width:15ch}
+  .hero .hi{margin-top:1rem;color:var(--marigold);font-size:1.15rem;font-weight:500}
+  .hero .lede{margin-top:1.25rem;font-size:1.2rem;color:#D5D9EE;max-width:46ch}
+  .hero .cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.9rem}
+  @media(max-width:920px){.hero .wrap{grid-template-columns:1fr;padding-block:3.5rem}}
+
+  /* Estimator */
+  .est{background:var(--white);color:var(--ink);border-radius:14px;padding:1.75rem;box-shadow:0 30px 60px -20px rgba(6,10,36,.55)}
+  .est h2{font-size:1.35rem}
+  .est .sub{color:var(--slate);font-size:.95rem;margin-top:.25rem}
+  .est fieldset{border:0;margin-top:1.25rem}
+  .est legend{font-weight:600;font-size:.95rem;margin-bottom:.55rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chips input{position:absolute;opacity:0;pointer-events:none}
+  .chips label{padding:.45rem .9rem;border:1.5px solid var(--line);border-radius:999px;font-size:.95rem;cursor:pointer;background:var(--paper);transition:background .15s,border-color .15s}
+  .chips label:hover{border-color:var(--ink)}
+  .chips input:checked + label{background:var(--ink);border-color:var(--ink);color:#fff}
+  .chips input:focus-visible + label{outline:3px solid var(--marigold);outline-offset:2px}
+  .est-out{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+  .est-out .price{font:700 2rem var(--display);letter-spacing:-.02em}
+  .est-out .meta{color:var(--slate);font-size:.95rem;margin-top:.15rem}
+  .bar{height:6px;border-radius:99px;background:var(--line);margin-top:.9rem;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--peacock);width:30%;transition:width .35s ease}
+  .est .btn{margin-top:1.25rem;width:100%}
+
+  /* Trust strip */
+  .trust{background:var(--white);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust div{padding:1.6rem 1.5rem;border-left:1px solid var(--line)}
+  .trust div:first-child{border-left:0;padding-left:0}
+  .trust strong{display:block;font:700 1.05rem var(--display)}
+  .trust span{display:block;color:var(--slate);font-size:.95rem;line-height:1.45;margin-top:.2rem}
+  @media(max-width:860px){.trust .wrap{grid-template-columns:1fr 1fr}.trust div:nth-child(3){border-left:0;padding-left:0}.trust div{border-top:1px solid var(--line)}.trust div:nth-child(-n+2){border-top:0}}
+  @media(max-width:480px){.trust .wrap{grid-template-columns:1fr}.trust div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.trust div:first-child{border-top:0}}
+
+  section{padding-block:5.5rem}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:20ch}
+  .sec-head p{margin-top:1rem;color:var(--slate);max-width:52ch}
+
+  /* Services */
+  .services .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem}
+  .svc-list details{border-top:1px solid var(--line)}
+  .svc-list details:last-child{border-bottom:1px solid var(--line)}
+  .svc-list summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.35rem 0;cursor:pointer;font:700 1.3rem var(--display);letter-spacing:-.01em}
+  .svc-list summary::-webkit-details-marker{display:none}
+  .svc-list summary::after{content:"+";font:400 1.6rem var(--body);color:var(--peacock);transition:transform .2s}
+  .svc-list details[open] summary::after{transform:rotate(45deg)}
+  .svc-list .body{padding:0 0 1.5rem;color:var(--slate);max-width:56ch}
+  .svc-list .tags{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.4rem}
+  .svc-list .tags span{font-size:.85rem;padding:.15rem .6rem;border-radius:4px;background:#E7ECF6;color:var(--ink)}
+  @media(max-width:860px){.services .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  /* Work */
+  .work{background:var(--white);border-block:1px solid var(--line)}
+  .work-grid{margin-top:3rem;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:1.5rem}
+  .case{border:1px solid var(--line);background:var(--paper);padding:2rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem}
+  .case.big{grid-row:span 2;background:var(--ink);color:#fff;border-color:var(--ink);border-radius:18px;flex-direction:row;align-items:stretch;gap:2rem}
+  .case.sm{border-radius:8px}
+  .case .who{font-size:.95rem;color:var(--slate)}
+  .case.big .who{color:#B9BFDB}
+  .case h3{font-size:1.45rem;margin-top:.35rem}
+  .case.big h3{font-size:1.9rem}
+  .case p{margin-top:.75rem;color:var(--slate)}
+  .case.big p{color:#D5D9EE}
+  .case .result{font:700 1.05rem var(--display);color:var(--peacock)}
+  .case.big .result{color:var(--marigold)}
+  .phone{flex:0 0 150px;align-self:center}
+  .more{margin-top:1.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+  .more div{padding-top:1rem;border-top:2px solid var(--line)}
+  .more b{display:block;font:700 1.05rem var(--display)}
+  .more span{display:block;color:var(--slate);font-size:.95rem;line-height:1.5;margin-top:.2rem}
+  .work-foot{margin-top:2.25rem}
+  @media(max-width:920px){.work-grid{grid-template-columns:1fr}.case.big{grid-row:auto;flex-direction:column}.phone{align-self:flex-start}.more{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.more{grid-template-columns:1fr}}
+
+  /* Process */
+  .steps{margin-top:3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:0 1.5rem 0 0}
+  .step::before{content:"";display:block;height:3px;background:var(--line);margin-bottom:1.25rem}
+  .step:first-child::before{background:var(--marigold)}
+  .step .n{font:700 .95rem var(--display);color:var(--peacock)}
+  .step h3{font-size:1.25rem;margin:.25rem 0 .5rem}
+  .step p{color:var(--slate);font-size:1rem;line-height:1.55}
+  .step .time{display:inline-block;margin-top:.8rem;font-weight:600;font-size:.9rem}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:2.25rem}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+  /* About */
+  .about{background:#EAF2F2}
+  .about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start}
+  .about h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:18ch}
+  .about p{margin-top:1rem;color:var(--slate);max-width:54ch}
+  .creds{list-style:none;display:grid;gap:1.1rem}
+  .creds li{border-left:5px solid var(--peacock);background:var(--white);padding:1rem 1.25rem}
+  .creds b{display:block;font:700 1.1rem var(--display)}
+  .creds span{color:var(--slate);font-size:.98rem}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  /* Engagement */
+  .models{margin-top:3rem;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white)}
+  .model{display:grid;grid-template-columns:1.1fr 1.4fr .8fr;gap:1.5rem;padding:1.6rem 1.75rem;align-items:center}
+  .model + .model{border-top:1px solid var(--line)}
+  .model h3{font-size:1.25rem}
+  .model p{color:var(--slate);font-size:1rem;line-height:1.55}
+  .model .from{font:700 1.4rem var(--display);text-align:right}
+  .model .from small{display:block;font:400 .85rem var(--body);color:var(--slate)}
+  .fine{margin-top:1rem;color:var(--slate);font-size:.95rem}
+  @media(max-width:760px){.model{grid-template-columns:1fr;gap:.6rem}.model .from{text-align:left}}
+
+  /* FAQ */
+  .faq{background:var(--white);border-block:1px solid var(--line)}
+  .faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem}
+  .faq details{border-top:1px solid var(--line);padding:1.1rem 0}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--peacock);font-size:1.4rem;line-height:1}
+  .faq details[open] summary::after{content:"\2212"}
+  .faq details p{margin-top:.7rem;color:var(--slate);max-width:56ch}
+  @media(max-width:860px){.faq .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  /* Contact */
+  .contact .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem}
+  .direct{margin-top:2rem;display:grid;gap:1rem}
+  .direct a{text-decoration:none;font-weight:600;display:block;overflow-wrap:anywhere}
+  .direct span{display:block;font-weight:400;color:var(--slate);font-size:.95rem}
+  form{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:2rem;display:grid;gap:1.1rem}
+  label.f{font-weight:600;font-size:.95rem;display:grid;gap:.35rem}
+  label.f small{font-weight:400;color:var(--slate)}
+  input[type=text],input[type=tel],input[type=email],textarea,select{font:inherit;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:100%}
+  input:focus,textarea:focus,select:focus{outline:3px solid var(--marigold);outline-offset:1px;border-color:var(--ink)}
+  textarea{min-height:110px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .ok{display:none;background:#E6F3EC;border:1px solid #A9D5BC;color:#14532D;padding:1rem 1.1rem;border-radius:8px;font-weight:500}
+  .ok.show{display:block}
+  .err{display:none;background:#FCEBEA;border:1px solid #F0B4B0;color:#7A1F1A;padding:.8rem 1.1rem;border-radius:8px;font-weight:500}
+  .err.show{display:block}
+  @media(max-width:860px){.contact .wrap{grid-template-columns:1fr;gap:2.5rem}.row2{grid-template-columns:1fr}}
+
+  footer{background:var(--ink);color:#C3C8E2;padding-block:3rem 2.5rem;font-size:.95rem}
+  footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem}
+  footer h4{color:#fff;font:600 1rem var(--body);margin-bottom:.6rem}
+  footer a:not(.logo){text-decoration:none;display:block;padding:.15rem 0;overflow-wrap:anywhere}
+  footer a:not(.logo):hover{color:#fff}
+  footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem;font-size:.88rem}
+  @media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- SoftVerse logo mark (reused in nav and footer) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sv-mark" viewBox="0 0 40 40">
+    <rect width="40" height="40" rx="10" fill="var(--lg-bg)"/>
+    <path d="M27.5 14c0-3.3-3.3-5-7.5-5s-7.5 1.9-7.5 5c0 7 15 3.3 15 11.3 0 3.7-3.4 6.2-7.5 6.2s-7.5-2.5-7.5-5.8" fill="none" stroke="var(--lg-fg)" stroke-width="3.6" stroke-linecap="round"/>
+    <circle cx="31.5" cy="8.5" r="3.8" fill="#F2A900"/>
+  </symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="SoftVerse Technologies home">
+      <svg width="42" height="42" role="img" aria-hidden="true"><use href="#sv-mark"/></svg>
+      <span class="wm"><b>SoftVerse</b><small>Technologies</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="#process">How we work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-dark" href="#contact">Book a free call</a>
+  </div>
+</header>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Software your business can rely on.</h1>
+      <p class="hi" lang="hi">आपके बिज़नेस के लिए भरोसेमंद सॉफ़्टवेयर</p>
+      <p class="lede">SoftVerse Technologies builds websites, mobile apps and AI tools for Indian businesses. You get a fixed price in rupees, a fixed date, and an engineer you can call.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Book a free 30-minute call</a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
+      </div>
+    </div>
+
+    <div class="est" role="group" aria-labelledby="est-title">
+      <h2 id="est-title">What will it cost?</h2>
+      <p class="sub">Pick what you need for a rough range. No email required.</p>
+
+      <fieldset>
+        <legend>I want to build</legend>
+        <div class="chips" id="kind">
+          <input type="radio" name="kind" id="k1" value="website" checked><label for="k1">Business website</label>
+          <input type="radio" name="kind" id="k2" value="ecommerce"><label for="k2">Online store</label>
+          <input type="radio" name="kind" id="k3" value="mobile"><label for="k3">Mobile app</label>
+          <input type="radio" name="kind" id="k4" value="webapp"><label for="k4">Web platform</label>
+          <input type="radio" name="kind" id="k5" value="ai"><label for="k5">AI chatbot / automation</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Size of the first release</legend>
+        <div class="chips" id="scale">
+          <input type="radio" name="scale" id="s1" value="0"><label for="s1">Starter</label>
+          <input type="radio" name="scale" id="s2" value="1" checked><label for="s2">Growth</label>
+          <input type="radio" name="scale" id="s3" value="2"><label for="s3">Enterprise</label>
+        </div>
+      </fieldset>
+
+      <div class="est-out" aria-live="polite">
+        <div class="price" id="price">₹4–8 lakh</div>
+        <div class="meta" id="meta">About 8–12 weeks, plus 18% GST</div>
+        <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+      </div>
+      <a class="btn btn-dark" href="#contact" id="est-cta">Get an exact quote in 48 hours</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <div><strong>You own the code</strong><span>Full source code and cloud accounts are yours from day one.</span></div>
+    <div><strong>Fixed-price milestones</strong><span>Pay in stages tied to working software, not to hours.</span></div>
+    <div><strong>NDA before the first call</strong><span>Your idea stays yours. We sign before you share details.</span></div>
+    <div><strong>Hindi or English</strong><span>You talk directly to the engineer building your product.</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What we build for Indian businesses</h2>
+      <p>Products designed for how India buys, pays and communicates, from UPI checkout to Hindi chatbots.</p>
+    </div>
+    <div class="svc-list">
+      <details open>
+        <summary>Websites and web platforms</summary>
+        <div class="body">Fast, secure sites, customer portals and internal dashboards that your team can run without calling us. Hosted in India when you need data to stay here.
+          <div class="tags"><span>HTML / CSS / JavaScript</span><span>React</span><span>Python</span><span>Node.js</span></div></div>
+      </details>
+      <details>
+        <summary>Online stores</summary>
+        <div class="body">Product catalogues, carts and order flows that feel simple to shoppers, with UPI, cards and cash on delivery.
+          <div class="tags"><span>Catalogue</span><span>Cart and checkout</span><span>UPI</span><span>Order tracking</span></div></div>
+      </details>
+      <details>
+        <summary>Mobile apps</summary>
+        <div class="body">Android first, iOS when you are ready. Built to work on 4G, patchy networks and budget phones, with Hindi and English support.
+          <div class="tags"><span>Flutter</span><span>React Native</span><span>Reminders and notifications</span></div></div>
+      </details>
+      <details>
+        <summary>AI chatbots and automation</summary>
+        <div class="body">Assistants that answer customer questions, take orders and follow up, on your website or WhatsApp. Plus tools that cut repetitive back-office work.
+          <div class="tags"><span>Python</span><span>NLP</span><span>AI / ML</span><span>WhatsApp Business API</span></div></div>
+      </details>
+      <details>
+        <summary>Data tools and reports</summary>
+        <div class="body">Trackers, dashboards and report generators that turn scattered data into something your team can read and share.
+          <div class="tags"><span>Python</span><span>Data processing</span><span>Analytics</span></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Products we have built</h2>
+      <p>A selection of working software from our portfolio, across AI, e-commerce, health and education.</p>
+    </div>
+    <div class="work-grid">
+      <article class="case big">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;flex:1">
+          <div>
+            <div class="who">Flagship AI platform</div>
+            <h3>IndiCore AI</h3>
+            <p>An AI platform built around practical, real-world features, showing how we turn intelligent ideas into products people can actually use.</p>
+          </div>
+          <div class="result">Python · AI / ML</div>
+        </div>
+        <svg class="phone" viewBox="0 0 150 290" aria-hidden="true">
+          <rect x="2" y="2" width="146" height="286" rx="22" fill="#0F1533" stroke="#3A447F" stroke-width="3"/>
+          <rect x="14" y="30" width="122" height="14" rx="4" fill="#262F63"/>
+          <rect x="14" y="58" width="92" height="40" rx="10" fill="#262F63"/>
+          <rect x="24" y="70" width="62" height="6" rx="3" fill="#7C86BF"/><rect x="24" y="82" width="40" height="6" rx="3" fill="#7C86BF"/>
+          <rect x="44" y="108" width="92" height="48" rx="10" fill="#F2A900"/>
+          <rect x="54" y="120" width="70" height="6" rx="3" fill="#1A2147"/><rect x="54" y="132" width="50" height="6" rx="3" fill="#1A2147"/>
+          <rect x="14" y="166" width="100" height="40" rx="10" fill="#262F63"/>
+          <rect x="24" y="178" width="72" height="6" rx="3" fill="#7C86BF"/><rect x="24" y="190" width="34" height="6" rx="3" fill="#7C86BF"/>
+          <rect x="14" y="238" width="122" height="30" rx="15" fill="#0E6B6E"/>
+          <circle cx="120" cy="253" r="8" fill="#fff"/>
+        </svg>
+      </article>
+      <article class="case sm">
+        <div>
+          <div class="who">Education</div>
+          <h3>Study Assistant</h3>
+          <p>An AI study companion that organises topics, writes quick notes and summaries, and keeps students on track.</p>
+        </div>
+        <div class="result">Python · AI / ML</div>
+      </article>
+      <article class="case sm">
+        <div>
+          <div class="who">E-commerce</div>
+          <h3>ShopEasy</h3>
+          <p>A clean online store for browsing products, managing the cart and placing orders in a few taps.</p>
+        </div>
+        <div class="result">HTML · CSS · JavaScript</div>
+      </article>
+    </div>
+    <div class="more">
+      <div><b>AI Chat Bot</b><span>A context-aware chatbot that answers user questions naturally.</span></div>
+      <div><b>Medicine Reminder</b><span>Timely alerts and dosage tracking for patients and families.</span></div>
+      <div><b>Edu AI</b><span>An education platform that personalises content for each learner.</span></div>
+      <div><b>Health Report Generator</b><span>Turns health data into clear reports that are easy to share.</span></div>
+    </div>
+    <div class="work-foot">
+      <a class="btn btn-outline" href="https://ankush-tech.vercel.app" target="_blank" rel="noopener">View full portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How a project runs, start to finish</h2>
+      <p>You always know what is being built, what it costs and when you will see it.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">Step 1</div><h3>Discovery call</h3><p>We listen, ask hard questions and sign an NDA. You leave with a clear list of what to build first.</p><span class="time">Week 1</span></div>
+      <div class="step"><div class="n">Step 2</div><h3>Fixed proposal</h3><p>A written scope, price in rupees, milestones and a delivery date. No hourly surprises.</p><span class="time">Within 48 hours</span></div>
+      <div class="step"><div class="n">Step 3</div><h3>Build in 2-week sprints</h3><p>Every sprint ends with a live demo on your phone. You approve or change direction.</p><span class="time">Weeks 2 onward</span></div>
+      <div class="step"><div class="n">Step 4</div><h3>Launch and support</h3><p>We go live together, train your team, then stay on call with a defined response time.</p><span class="time">30 days of free fixes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>Built by an engineer you can talk to</h2>
+      <p>SoftVerse Technologies was founded by Ankush Kumar, a full-stack and AI/ML developer. When you work with us, you speak directly to the person building your product, not to an account manager.</p>
+      <p>We keep the team small on purpose, so every project gets senior attention and every message gets a real answer.</p>
+    </div>
+    <ul class="creds">
+      <li><b>8 products built</b><span>AI assistants, chatbots, e-commerce, health and education tools.</span></li>
+      <li><b>AI internship track</b><span>Techgyan Technologies, in partnership with IIT Delhi.</span></li>
+      <li><b>Skill India (NSDC) certifications</b><span>Government-backed skill development programmes.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Three ways to work with us</h2>
+      <p>Choose the model that fits how sure you are about the scope.</p>
+    </div>
+    <div class="models">
+      <div class="model">
+        <div><h3>Fixed-price project</h3></div>
+        <p>Best when you know what you want built. Paid in milestones, typically 30% to start, 40% at beta and 30% at launch.</p>
+        <div class="from"><small>Starts at</small>₹1.5 lakh</div>
+      </div>
+      <div class="model">
+        <div><h3>Dedicated team</h3></div>
+        <p>Best for a product that keeps evolving. A named team works only on your roadmap, billed monthly.</p>
+        <div class="from"><small>Starts at</small>₹1.8 lakh / month</div>
+      </div>
+      <div class="model">
+        <div><h3>Care plan</h3></div>
+        <p>Best for live software. Monitoring, security updates, backups and a set number of change requests each month.</p>
+        <div class="from"><small>Starts at</small>₹25,000 / month</div>
+      </div>
+    </div>
+    <p class="fine">All prices exclude 18% GST. Final quotes come after discovery.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions founders ask us first</h2></div>
+    <div>
+      <details><summary>Who owns the code and the designs?</summary><p>You do. Everything transfers to you on final payment, and we set up your cloud, app store and domain accounts in your name from the start.</p></details>
+      <details><summary>Will you sign an NDA?</summary><p>Yes, before you share anything sensitive. We can use your format or ours.</p></details>
+      <details><summary>Where will my data be stored?</summary><p>In India by default, on cloud regions in Mumbai or Hyderabad, unless you tell us otherwise. We build with the Digital Personal Data Protection Act in mind.</p></details>
+      <details><summary>Can we speak in Hindi?</summary><p>Yes. We work in Hindi and English, and calls run on Indian Standard Time.</p></details>
+      <details><summary>How do payments work?</summary><p>You pay in milestones tied to working software you have seen. We accept UPI and bank transfer, and we share a written invoice for every payment.</p></details>
+      <details><summary>What happens after launch?</summary><p>You get 30 days of free bug fixes. After that, choose a care plan or pay per change. Either way you are never locked in.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Tell us what you want to build</h2>
+      <p>The engineer who will build it, not a salesperson, will reply within one working day.</p>
+      <div class="direct">
+        <a href="mailto:kumarankush86116@gmail.com">kumarankush86116@gmail.com<span>For proposals and questions</span></a>
+        <a href="https://ankush-tech.vercel.app" target="_blank" rel="noopener">ankush-tech.vercel.app<span>Founder portfolio</span></a>
+      </div>
+    </div>
+    <form id="lead" novalidate>
+      <div class="row2">
+        <label class="f">Your name<input type="text" name="name" autocomplete="name" required></label>
+        <label class="f">Phone or WhatsApp<input type="tel" name="phone" autocomplete="tel" placeholder="+91" required></label>
+      </div>
+      <label class="f">Work email<input type="email" name="email" autocomplete="email" required></label>
+      <label class="f">What do you need?
+        <select name="need">
+          <option>Business website</option><option>Online store</option><option>Mobile app</option><option>Web platform</option><option>AI chatbot / automation</option><option>Not sure yet</option>
+        </select>
+      </label>
+      <label class="f">A few lines about your idea <small>(optional)</small><textarea name="msg" id="msg"></textarea></label>
+      <div class="err" id="err" role="alert">Please enter your name, a valid 10-digit mobile number and a valid email.</div>
+      <button class="btn btn-primary" type="submit">Book my free call</button>
+      <div class="ok" id="ok" role="status">Your email app should open with the details filled in. Press send and we will reply within one working day.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#top" aria-label="SoftVerse Technologies home">
+        <svg width="42" height="42" aria-hidden="true"><use href="#sv-mark"/></svg>
+        <span class="wm"><b>SoftVerse</b><small>Technologies</small></span>
+      </a>
+      <p style="margin-top:.9rem;max-width:34ch">Websites, apps and AI tools for Indian businesses.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#services">Services</a><a href="#work">Our work</a><a href="#about">About</a><a href="#pricing">Pricing</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:kumarankush86116@gmail.com">kumarankush86116@gmail.com</a>
+      <a href="https://ankush-tech.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/codewithchiku0250" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="legal">© 2026 SoftVerse Technologies. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Estimator: [minLakh, maxLakh, minWeeks, maxWeeks] per size
+  const DATA = {
+    website:   [[0.8,1.5,2,3],[2,4,4,6],[5,9,8,12]],
+    ecommerce: [[2,4,4,6],[5,10,8,12],[12,25,14,22]],
+    mobile:    [[3,5,8,10],[6,12,12,16],[14,30,18,28]],
+    webapp:    [[4,7,8,10],[8,16,12,18],[18,40,20,32]],
+    ai:        [[2,4,3,5],[5,10,6,10],[12,25,12,20]]
+  };
+  const LABEL = {website:'business website',ecommerce:'online store',mobile:'mobile app',webapp:'web platform',ai:'AI chatbot / automation'};
+  const SIZE = ['starter','growth','enterprise'];
+  const $ = id => document.getElementById(id);
+  const n = v => Number.isInteger(v) ? v : v.toFixed(1);
+
+  function update(){
+    const kind = document.querySelector('input[name=kind]:checked').value;
+    const scale = +document.querySelector('input[name=scale]:checked').value;
+    const [a,b,w1,w2] = DATA[kind][scale];
+    $('price').textContent = '₹' + n(a) + '–' + n(b) + ' lakh';
+    $('meta').textContent = 'About ' + w1 + '–' + w2 + ' weeks, plus 18% GST';
+    $('bar').style.width = (25 + scale*30) + '%';
+    $('est-cta').dataset.note = 'I am looking for a ' + SIZE[scale] + ' ' + LABEL[kind] + ' (estimate ₹' + n(a) + '–' + n(b) + ' lakh, ' + w1 + '–' + w2 + ' weeks).';
+  }
+  document.querySelectorAll('.est input').forEach(i => i.addEventListener('change', update));
+  $('est-cta').addEventListener('click', () => { $('msg').value = $('est-cta').dataset.note; });
+  update();
+
+  // Lead form: opens the visitor's email app with details pre-filled (no backend needed)
+  $('lead').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    const phoneOk = /^(\+91[\s-]?)?[6-9]\d{9}$/.test(f.phone.value.replace(/\s|-/g,'').replace(/^(\+91)(\d{10})$/,'$1$2'));
+    const valid = f.name.value.trim() && phoneOk && /^\S+@\S+\.\S+$/.test(f.email.value.trim());
+    $('err').classList.toggle('show', !valid);
+    if(!valid){ $('ok').classList.remove('show'); return; }
+    const body = 'Name: ' + f.name.value + '\nPhone: ' + f.phone.value + '\nEmail: ' + f.email.value + '\nNeed: ' + f.need.value + '\n\n' + f.msg.value;
+    window.location.href = 'mailto:kumarankush86116@gmail.com?subject=' + encodeURIComponent('New enquiry: ' + f.need.value) + '&body=' + encodeURIComponent(body);
+    $('ok').classList.add('show');
+  });
+</script>
+</body>
+</html>
